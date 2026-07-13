@@ -30,7 +30,7 @@ class ReferralTest extends TestCase
         $service->reward($referred);
         $service->reward($referred); // idempotent - second call is a no-op
 
-        $expected = config('onetimelink.points.referrer_bonus');
+        $expected = config('onetimelink.points.referrer_reward');
         $this->assertSame($expected, $referrer->fresh()->points_balance);
         $this->assertSame(1, Referral::where('status', Referral::STATUS_REWARDED)->count());
     }
