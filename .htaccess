@@ -1,0 +1,12 @@
+# Route all traffic into the Laravel public/ directory.
+# Use this file when the project root itself is public_html
+# (see docs/DEPLOYMENT_HOSTINGER.md, Strategy B).
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Deny direct access to sensitive files if rewriting is unavailable.
+<FilesMatch "^(\.env|composer\.(json|lock)|artisan)$">
+    Require all denied
+</FilesMatch>

@@ -1,0 +1,284 @@
+/* ==========================================================================
+   One-Time Link — application stylesheet
+   Palette: "deep ink" — near-black indigo surfaces, warm paper accents,
+   a single ember highlight reserved for the one-shot / burn motif.
+   Layered on top of Bootstrap 5.3 via CSS custom properties.
+   ========================================================================== */
+
+:root {
+    --otl-ink: #14151f;          /* deepest surface */
+    --otl-ink-soft: #1d1f2e;     /* raised surface */
+    --otl-paper: #f6f4ee;        /* page background */
+    --otl-card: #ffffff;
+    --otl-line: #e4e0d5;
+    --otl-text: #23242e;
+    --otl-muted: #6d6f7e;
+    --otl-ember: #d4572a;        /* one-shot highlight — used sparingly */
+    --otl-ember-soft: #f9e5db;
+    --otl-moss: #3e6b4f;
+    --otl-moss-soft: #e2eee6;
+    --otl-gold: #b78b2e;
+    --otl-gold-soft: #f6ecd4;
+
+    --bs-body-bg: var(--otl-paper);
+    --bs-body-color: var(--otl-text);
+    --bs-body-font-family: "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --bs-border-radius: .55rem;
+    --bs-link-color: #35507a;
+    --bs-link-hover-color: #22375a;
+}
+
+body {
+    letter-spacing: .01em;
+}
+
+h1, h2, h3, h4, .navbar-brand {
+    font-family: Georgia, "Times New Roman", serif;
+    letter-spacing: 0;
+}
+
+/* --- Navigation ---------------------------------------------------------- */
+
+.otl-nav {
+    background: var(--otl-ink);
+    border-bottom: 3px solid var(--otl-ember);
+}
+
+.otl-nav .navbar-brand,
+.otl-nav .nav-link {
+    color: #e9e7df;
+}
+
+.otl-nav .nav-link:hover,
+.otl-nav .nav-link:focus {
+    color: #ffffff;
+}
+
+.otl-brand-mark {
+    color: var(--otl-ember);
+    font-size: 1.15em;
+}
+
+.otl-nav .navbar-toggler {
+    border-color: rgba(233, 231, 223, .4);
+}
+
+.otl-nav .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(233,231,223,.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* --- Cards & surfaces ----------------------------------------------------- */
+
+.otl-card {
+    background: var(--otl-card);
+    border: 1px solid var(--otl-line);
+    box-shadow: 0 1px 2px rgba(20, 21, 31, .05);
+}
+
+.otl-card .card-header {
+    background: transparent;
+    border-bottom: 1px solid var(--otl-line);
+    font-weight: 600;
+    font-size: .92rem;
+}
+
+.otl-stat .otl-stat-label {
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    color: var(--otl-muted);
+}
+
+.otl-stat .otl-stat-value {
+    font-family: Georgia, serif;
+    font-size: 1.7rem;
+    line-height: 1.2;
+}
+
+/* --- Buttons -------------------------------------------------------------- */
+
+.btn-otl {
+    --bs-btn-bg: var(--otl-ink);
+    --bs-btn-border-color: var(--otl-ink);
+    --bs-btn-color: #f2f0e9;
+    --bs-btn-hover-bg: #262838;
+    --bs-btn-hover-border-color: #262838;
+    --bs-btn-hover-color: #ffffff;
+    --bs-btn-active-bg: var(--otl-ember);
+    --bs-btn-active-border-color: var(--otl-ember);
+    --bs-btn-active-color: #ffffff;
+    --bs-btn-focus-shadow-rgb: 212, 87, 42;
+}
+
+/* --- Badges --------------------------------------------------------------- */
+
+.badge.otl-points {
+    background: var(--otl-gold-soft);
+    color: var(--otl-gold);
+    border: 1px solid var(--otl-gold);
+    font-weight: 600;
+}
+
+.badge[class*="otl-badge-"] {
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.otl-badge-active   { background: var(--otl-moss-soft);  color: var(--otl-moss); }
+.otl-badge-redeemed { background: var(--otl-ember-soft); color: var(--otl-ember); }
+.otl-badge-expired  { background: var(--otl-gold-soft);  color: var(--otl-gold); }
+.otl-badge-disabled { background: #e8e8ec;               color: #5a5c68; }
+
+/* --- Typographic accents --------------------------------------------------- */
+
+.otl-eyebrow {
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--otl-ember);
+    font-weight: 700;
+}
+
+.otl-muted-link {
+    color: var(--otl-muted);
+    text-decoration: none;
+    border-bottom: 1px dotted currentColor;
+}
+
+.otl-muted-link:hover {
+    color: var(--otl-text);
+}
+
+/* --- Home / hero ----------------------------------------------------------- */
+
+.otl-hero {
+    background: var(--otl-ink);
+    color: #ece9e0;
+    border-radius: .9rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.otl-hero::after {
+    content: "";
+    position: absolute;
+    inset: auto -10% -55% -10%;
+    height: 70%;
+    background: radial-gradient(ellipse at center, rgba(212, 87, 42, .35), transparent 70%);
+    pointer-events: none;
+}
+
+.otl-steps li {
+    padding-left: .25rem;
+    margin-bottom: .35rem;
+}
+
+.otl-steps li::marker {
+    color: var(--otl-ember);
+    font-weight: 700;
+}
+
+/* --- Timeline --------------------------------------------------------------- */
+
+.otl-timeline .list-group-item {
+    border-left: 3px solid var(--otl-line);
+    margin-left: .5rem;
+    border-radius: 0;
+}
+
+.otl-timeline .list-group-item:first-child {
+    border-left-color: var(--otl-ember);
+}
+
+/* --- Admin nav --------------------------------------------------------------- */
+
+.otl-admin-nav .nav-pills {
+    gap: .25rem;
+    padding-bottom: .25rem;
+}
+
+.otl-admin-nav .nav-link {
+    color: var(--otl-muted);
+    border: 1px solid transparent;
+}
+
+.otl-admin-nav .nav-link.active {
+    background: var(--otl-ink);
+    color: #f2f0e9;
+}
+
+.otl-admin-nav .nav-link:not(.active):hover {
+    border-color: var(--otl-line);
+    color: var(--otl-text);
+}
+
+/* --- Announcements ------------------------------------------------------------ */
+
+.otl-announce {
+    background: var(--otl-gold-soft);
+    border: 1px solid var(--otl-gold);
+    color: #6d5416;
+}
+
+/* --- Status / error pages ------------------------------------------------------ */
+
+.otl-status-page {
+    background:
+        radial-gradient(circle at 15% 15%, rgba(212, 87, 42, .07), transparent 40%),
+        var(--otl-paper);
+}
+
+.otl-status-glyph {
+    font-family: Georgia, serif;
+    font-size: 2.6rem;
+    line-height: 1;
+    color: var(--otl-ember);
+    margin-bottom: .75rem;
+}
+
+/* Signature "burn" edge for the already-redeemed card: a charred top rule
+   that marks a link which has been spent. */
+.otl-burn-edge {
+    border-top: 4px solid var(--otl-ember);
+    background:
+        linear-gradient(180deg, var(--otl-ember-soft) 0, transparent 3.5rem),
+        var(--otl-card);
+}
+
+/* --- Footer --------------------------------------------------------------------- */
+
+.otl-footer {
+    background: var(--otl-ink);
+    color: #b9b7ad;
+    border-top: 1px solid #2a2c3c;
+}
+
+/* --- Forms & tables ---------------------------------------------------------------- */
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--otl-ink);
+    box-shadow: 0 0 0 .2rem rgba(20, 21, 31, .12);
+}
+
+.table > thead th {
+    font-size: .76rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--otl-muted);
+    border-bottom-width: 2px;
+}
+
+/* Keep copy targets legible on small screens */
+.otl-copy-cell {
+    max-width: 240px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@media (max-width: 575.98px) {
+    .otl-stat .otl-stat-value {
+        font-size: 1.35rem;
+    }
+}
